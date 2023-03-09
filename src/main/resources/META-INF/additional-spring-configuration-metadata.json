@@ -1,0 +1,52 @@
+{"properties": [
+  {
+    "name": "pring.jpa.properties.hibernate.dialect",
+    "type": "java.lang.String",
+    "description": "A description for 'pring.jpa.properties.hibernate.dialect'"
+  },
+  {
+    "name": "api.endpoint.accounting",
+    "type": "java.lang.String",
+    "description": "A description for 'api.endpoint.accounting'"
+  },
+  {
+    "name": "management.security.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'management.security.enabled'"
+  },
+  {
+    "name": "uri.bankacc",
+    "type": "java.lang.String",
+    "description": "A description for 'uri.bankacc'"
+  },
+  {
+    "name": "uri.bankacc-verification-non-penny",
+    "type": "java.lang.String",
+    "description": "A description for 'uri.bankacc-verification-non-penny'"
+  },
+  {
+    "name": "uri.bankacc-verification",
+    "type": "java.lang.String",
+    "description": "A description for 'uri.bankacc-verification'"
+  },
+  {
+    "name": "some.error",
+    "type": "java.lang.String",
+    "description": "A description for 'some.error'"
+  },
+  {
+    "name": "header.key",
+    "type": "java.lang.String",
+    "description": "A description for 'header.key'"
+  },
+  {
+    "name": "header.value",
+    "type": "java.lang.String",
+    "description": "A description for 'header.value'"
+  },
+  {
+    "name": "springdoc.show.actuator",
+    "type": "java.lang.String",
+    "description": "A description for 'springdoc.show.actuator'"
+  }
+]}

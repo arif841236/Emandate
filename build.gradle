@@ -1,0 +1,77 @@
+buildscript {
+	ext {
+      springBootVersion = '2.7.8'
+   }
+   repositories {
+      mavenCentral()
+   }
+   dependencies {
+   	  classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+      classpath('se.transmode.gradle:gradle-docker:1.2')
+   }
+}
+
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.8'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.mandate'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+apply plugin: 'docker'
+
+task buildDocker(type: Docker, dependsOn: build) {
+   applicationName = jar.baseName
+   dockerfile = file('Dockerfile')
+   doFirst {
+      copy {
+         from jar
+         into stageDir
+      }
+   }
+}
+
+jar{
+    archiveClassifier=''
+    enabled = false
+	manifest {
+        attributes(
+                'Main-Class': 'com.mandate.MandateApplication'
+        )
+    }
+}
+
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'org.postgresql:postgresql'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.postgresql:postgresql:42.2.23'
+	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+    implementation 'io.springfox:springfox-swagger2:2.9.2'
+    implementation 'com.google.code.gson:gson:2.10' 
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'io.swagger.core.v3:swagger-annotations:2.2.8'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
